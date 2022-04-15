@@ -1,0 +1,27 @@
+{
+    "name": "henrique/cyber-tech-php",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CyberTech\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Henrique Rocha",
+            "email": "rochahenrique18@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^1.21"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+  "require": {
+    "ext-pdo": "*"
+  }
+}
