@@ -24,6 +24,16 @@
 |
 */
 
+use CyberTech\Infra\Storage\Database\CategoriesRepository;
+use CyberTech\Infra\Storage\Database\Connection;
+use CyberTech\Infra\Storage\Database\ProductRepository;
+use CyberTech\Infra\Storage\Database\SupplierRepository;
+use CyberTech\Modules\Stock\Domain\Entity\Category;
+use CyberTech\Modules\Stock\Domain\Entity\Product;
+use CyberTech\Modules\Stock\Domain\Entity\Supplier;
+use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use JetBrains\PhpStorm\ArrayShape;
+
 expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
@@ -39,7 +49,45 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
+#[ArrayShape(['productId' => "int", 'supplierId' => "int"])]
+function createStockDependencies(Connection $connection): array {
+    $categoryRepository = new CategoriesRepository($connection);
+    $productRepository = new ProductRepository($connection);
+    $supplierRepository = new SupplierRepository($connection);
+
+    $categoryRepository->create(
+        new Category(
+            description: "Roteadores"
+        )
+    );
+    $category = $categoryRepository->findFirst();
+
+    $productRepository->create(
+        new Product(
+            description: "Wireless Router",
+            brand: "TP LINK",
+            model: "TP-100WL",
+            minQuantity: 5,
+            categoryId: $category->id,
+            costPrice: 25.00,
+            available: true,
+        )
+    );
+    $product = $productRepository->findFirst();
+    $supplierRepository->create(
+        new Supplier(
+            name: "Henrique Rocha",
+            document: new DocumentCPFCNPJ("287.497.580-04"),
+            address: "Rua Bela vista do aeroporto",
+            neighborhood: "São Cristóvão",
+            city: "Salvador",
+            state: "BA"
+        )
+    );
+    $supplier = $supplierRepository->findFirst();
+
+    return [
+        'productId' => $product->id,
+        'supplierId' => $supplier->id,
+    ];
 }

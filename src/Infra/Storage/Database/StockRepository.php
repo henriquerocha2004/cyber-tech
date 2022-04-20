@@ -29,13 +29,26 @@ class StockRepository implements IStockRepository
        );
     }
 
-    public function getProductQuantity(int $productId): int
-    {
-        // TODO: Implement getProductQuantity() method.
-    }
-
     public function clear(): void
     {
         // TODO: Implement clear() method.
+    }
+
+    public function findFirst(): Stock|null
+    {
+       $result = $this->connection->query("SELECT * FROM stock LIMIT 1", []);
+       if (empty($result)) {
+           return null;
+       }
+
+       return new Stock(
+           typeMovement: $result[0]['movement_type'],
+           quantity: $result[0]['quantity'],
+           invoice: $result[0]['invoice'],
+           date: $result[0]['date'],
+           supplierId: $result[0]['supplier_id'],
+           productId: $result[0]['product_id'],
+           id: $result[0]['id'],
+       );
     }
 }

@@ -40,7 +40,6 @@ class ProductRepository implements IProductRepository
       }
 
       return new Product(
-          id: $result[0]['id'],
           description: $result[0]['description'],
           brand: $result[0]['brand'],
           model: $result[0]['model'],
@@ -49,6 +48,7 @@ class ProductRepository implements IProductRepository
           costPrice: $result[0]['cost_price'],
           available: $result[0]['available'],
           salePrice: $result[0]['sale_price'] ?? 0,
+          id: $result[0]['id'],
       );
     }
 
@@ -90,7 +90,6 @@ class ProductRepository implements IProductRepository
         $products = new ProductCollection();
         foreach ($results as $result) {
             $product = new Product(
-                id: $result['id'],
                 description: $result['description'],
                 brand: $result['brand'],
                 model: $result['model'],
@@ -98,7 +97,8 @@ class ProductRepository implements IProductRepository
                 categoryId: $result['category_id'],
                 costPrice: $result['cost_price'],
                 available: $result['available'],
-                salePrice: $result['sale_price']
+                salePrice: $result['sale_price'],
+                id: $result['id']
             );
             $products->add($product);
         }
@@ -113,7 +113,6 @@ class ProductRepository implements IProductRepository
             return null;
         }
         return new Product(
-            id: $result[0]['id'],
             description: $result[0]['description'],
             brand: $result[0]['brand'],
             model: $result[0]['model'],
@@ -122,6 +121,7 @@ class ProductRepository implements IProductRepository
             costPrice: $result[0]['cost_price'],
             available: $result[0]['available'],
             salePrice: $result[0]['sale_price'] ?? 0,
+            id: $result[0]['id'],
         );
     }
 }

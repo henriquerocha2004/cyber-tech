@@ -1,36 +1,66 @@
 <?php
 
+use CyberTech\Infra\Storage\Database\CategoriesRepository;
+use CyberTech\Infra\Storage\Database\Connection;
 use CyberTech\Infra\Storage\Database\Mysql\PdoAdapterMysql;
 use CyberTech\Infra\Storage\Database\ProductRepository;
 use CyberTech\Infra\Storage\Database\StockRepository;
+use CyberTech\Infra\Storage\Database\SupplierRepository;
+use CyberTech\Modules\Stock\Domain\Entity\Category;
 use CyberTech\Modules\Stock\Domain\Entity\Product;
 use CyberTech\Modules\Stock\Domain\Entity\Stock;
+use CyberTech\Modules\Stock\Domain\Entity\Supplier;
+use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use JetBrains\PhpStorm\ArrayShape;
 
 $adapterMysql = new PdoAdapterMysql();
-$productRepository = new ProductRepository($adapterMysql);
-$stockRepository = new StockRepository(new PdoAdapterMysql());
+$stockRepository = new StockRepository($adapterMysql);
 
-test("this should create an stock in", function () use ($productRepository, $stockRepository) {
-    $product = new Product(
-        id: 1,
-        description: "Wireless Router",
-        brand: "TP_LINK",
-        model: "TP-1000",
-        minQuantity: 5,
-        categoryId: 1,
-        costPrice: 20.00,
-        available: true
+beforeEach(function () use ($adapterMysql) {
+    $adapterMysql->beginTransaction();
+});
+
+afterEach(function () use ($adapterMysql) {
+   $adapterMysql->rollback();
+});
+
+
+test("this should create an stock in", function () use ($stockRepository, $adapterMysql) {
+    $dependency = createStockDependencies($adapterMysql);
+    $stockRepository->insert(
+        new Stock(
+            typeMovement: "IN",
+            quantity: 10,
+            invoice: '12345678',
+            date: '2022-04-15',
+            supplierId: $dependency['supplierId'],
+            productId: $dependency['productId']
+        )
     );
 
-    $stock = new Stock(
-        id: 1,
-        typeMovement: "IN",
-        quantity: 13,
-        invoice: "000000-111",
-        date: "2022-04-15",
-        supplierId: 1,
-        productId: $product->id
+    $stock = $stockRepository->findFirst();
+    $this->assertEquals("IN", $stock->typeMovement);
+    $this->assertEquals("12345678", $stock->invoice);
+    $this->assertEquals($dependency['supplierId'], $stock->supplierId);
+    $this->assertEquals($dependency['productId'], $stock->productId);
+});
+
+test("this should create an stock out", function () use ($stockRepository, $adapterMysql) {
+    $dependency = createStockDependencies($adapterMysql);
+    $stockRepository->insert(
+        new Stock(
+            typeMovement: "OUT",
+            quantity: 10,
+            invoice: '12345678',
+            date: '2022-04-15',
+            supplierId: $dependency['supplierId'],
+            productId: $dependency['productId']
+        )
     );
 
-    $this->assertEquals($stock->quantity, 13);
+    $stock = $stockRepository->findFirst();
+    $this->assertEquals("OUT", $stock->typeMovement);
+    $this->assertEquals("12345678", $stock->invoice);
+    $this->assertEquals($dependency['supplierId'], $stock->supplierId);
+    $this->assertEquals($dependency['productId'], $stock->productId);
 });
