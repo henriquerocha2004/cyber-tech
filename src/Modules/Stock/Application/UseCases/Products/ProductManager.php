@@ -35,7 +35,8 @@ class ProductManager
             return new ProductOutput(
                 result: false,
                 message: $t->getMessage(),
-                error: $t
+                error: $t,
+                code: 500
             );
         }
     }
@@ -57,7 +58,12 @@ class ProductManager
             $this->productRepository->update($productId, $product);
             return new ProductOutput(true);
         }catch (Throwable $t) {
-            return new ProductOutput(result: false, message: $t->getMessage(), error: $t);
+            return new ProductOutput(
+                result: false,
+                message: $t->getMessage(),
+                error: $t,
+                code: 500
+            );
         }
     }
 
@@ -67,7 +73,12 @@ class ProductManager
             $this->productRepository->delete($productId);
             return new ProductOutput(true);
         }catch (Throwable $t) {
-            return new ProductOutput(result: false, message: $t->getMessage(), error: $t);
+            return new ProductOutput(
+                result: false,
+                message: $t->getMessage(),
+                error: $t,
+                code: 500
+            );
         }
     }
 }

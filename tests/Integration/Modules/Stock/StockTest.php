@@ -34,7 +34,7 @@ test("should create stock in", function () use ($stockRepository, $adapterPdoMys
     $this->assertEquals("12345678", $stock->invoice);
 });
 
-test('most obtain the quantity of a product in stock', function ()  use ($stockRepository, $adapterPdoMysql){
+test('most obtain the quantity of a product in stock', function () use ($stockRepository, $adapterPdoMysql) {
     $dependency = createStockDependencies($adapterPdoMysql);
     $stockInput = new StockInput(
         typeMovement: "IN",

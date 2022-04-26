@@ -11,6 +11,6 @@ class StockInput
         public readonly string $date,
         public readonly int $supplierId,
         public readonly int $productId,
-    ){
+    ) {
     }
 }

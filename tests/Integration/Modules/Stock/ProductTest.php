@@ -22,16 +22,16 @@ afterEach(function () use ($adapterPdoMysql) {
 
 
 #[ArrayShape(['categoryId' => "int"])]
-function createProductDependencies(Connection $connection): array {
-   $categoryRepository = new CategoriesRepository($connection);
-   $categoryRepository->create(
-       new Category(
-           description: "Roteadores"
-       )
-   );
-   $category = $categoryRepository->findFirst();
-
-   return ['categoryId' => $category->id];
+function createProductDependencies(Connection $connection): array
+{
+    $categoryRepository = new CategoriesRepository($connection);
+    $categoryRepository->create(
+        new Category(
+            description: "Roteadores"
+        )
+    );
+    $category = $categoryRepository->findFirst();
+    return ['categoryId' => $category->id];
 }
 
 test('should create new product', function () use ($productRepository, $adapterPdoMysql) {
@@ -89,7 +89,7 @@ test('should update product', function () use ($productRepository, $adapterPdoMy
     $this->assertEquals(50.00, $product->costPrice);
 });
 
-test('should delete product', function () use ($productRepository, $adapterPdoMysql){
+test('should delete product', function () use ($productRepository, $adapterPdoMysql) {
     $dependencies = createProductDependencies($adapterPdoMysql);
     $input = new ProductInput(
         description: "Wireless Router",

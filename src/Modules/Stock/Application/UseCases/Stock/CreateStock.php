@@ -10,7 +10,7 @@ class CreateStock
 {
     public function __construct(
         private readonly IStockRepository $stockRepository
-    ){
+    ) {
     }
 
     public function handle(StockInput $input): StockOutput
@@ -27,10 +27,12 @@ class CreateStock
 
             $this->stockRepository->insert($stock);
             return new StockOutput(true);
-        }catch (Throwable $t) {
-           return new StockOutput(
-               result: false, message: $t->getMessage(), error: $t
-           );
+        } catch (Throwable $t) {
+            return new StockOutput(
+                result: false,
+                message: $t->getMessage(),
+                error: $t
+            );
         }
     }
 }

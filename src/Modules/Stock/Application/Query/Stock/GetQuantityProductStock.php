@@ -8,13 +8,16 @@ use CyberTech\Modules\Stock\Domain\Entity\Stock;
 class GetQuantityProductStock
 {
     public function __construct(
-        private Connection $connection)
-    {
+        private Connection $connection
+    ) {
     }
 
     public function execute(int $productId): int
     {
-        $results = $this->connection->query("SELECT movement_type, quantity FROM stock WHERE product_id = ?", [$productId]);
+        $results = $this->connection->query(
+            "SELECT movement_type, quantity FROM stock WHERE product_id = ?",
+            [$productId]
+        );
         if (empty($results)) {
             return 0;
         }

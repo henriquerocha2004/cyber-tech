@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "CyberTech\\": "src/"
+            "CyberTech\\": "src/",
+            "Core\\" : "Core/"
         }
     },
     "authors": [
@@ -22,6 +23,11 @@
         }
     },
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+        "psr/container": "^1.0",
+        "php-di/php-di": "^6.4",
+        "symfony/routing": "^6.0",
+        "symfony/http-foundation": "^6.0",
+        "symfony/http-kernel": "^6.0"
   }
 }

@@ -10,8 +10,7 @@ class CategoriesRepository implements ICategoryRepository
 {
     public function __construct(
         private readonly Connection $connection
-    )
-    {
+    ) {
     }
 
     public function create(Category $category): void
@@ -68,15 +67,15 @@ class CategoriesRepository implements ICategoryRepository
 
     public function findFirst(): Category|null
     {
-       $result = $this->connection->query("SELECT * from categories LIMIT 1", []);
-       if (empty($result)) {
-           return null;
-       }
+        $result = $this->connection->query("SELECT * from categories LIMIT 1", []);
+        if (empty($result)) {
+            return null;
+        }
 
-       return new Category(
-           id: $result[0]['id'],
-           description: $result[0]['description']
-       );
+        return new Category(
+            id: $result[0]['id'],
+            description: $result[0]['description']
+        );
     }
 
     public function clear(): void

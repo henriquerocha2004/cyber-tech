@@ -1,8 +1,8 @@
 <?php
 
-namespace CyberTech\Modules\Stock\Application\UseCases\Stock;
+namespace CyberTech\Modules\Stock\Application\UseCases\Suppliers;
 
-class StockOutput
+class SupplierOutput
 {
     public function __construct(
         public bool $result,

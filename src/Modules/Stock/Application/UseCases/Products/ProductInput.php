@@ -14,6 +14,12 @@ class ProductInput
         public readonly bool $available,
         public readonly float $salePrice = 0.00,
     ){
+        $this->validate();
+    }
+
+    private function validate()
+    {
+
     }
 
 }
