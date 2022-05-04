@@ -14,7 +14,6 @@ class Product
         public bool $available,
         public float $salePrice = 0.00,
         public int $id = 0,
-    ){
-
+    ) {
     }
 }

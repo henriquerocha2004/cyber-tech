@@ -16,9 +16,9 @@ class PdoAdapterMysql implements Connection
 
     public function query(string $query, mixed $params): array|bool
     {
-       $stmt = $this->connection->prepare($query);
-       $stmt->execute($params);
-       return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function close(): void
@@ -37,6 +37,6 @@ class PdoAdapterMysql implements Connection
 
     public function commit(): void
     {
-       $this->connection->commit();
+        $this->connection->commit();
     }
 }

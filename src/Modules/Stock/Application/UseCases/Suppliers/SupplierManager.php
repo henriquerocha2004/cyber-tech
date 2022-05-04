@@ -44,9 +44,8 @@ class SupplierManager
             );
 
             $this->supplierRepository->update($supplierId, $supplier);
-
             return new SupplierOutput(true);
-        }catch (Throwable $t) {
+        } catch (Throwable $t) {
             return new SupplierOutput(false, $t->getMessage(), $t);
         }
     }
@@ -56,7 +55,7 @@ class SupplierManager
         try {
             $this->supplierRepository->delete($supplierId);
             return new SupplierOutput(true);
-        }catch (Throwable $t) {
+        } catch (Throwable $t) {
             return new SupplierOutput(false, $t->getMessage(), $t);
         }
     }

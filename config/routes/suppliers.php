@@ -1,36 +1,36 @@
 <?php
 
-use CyberTech\Infra\Controllers\CategoriesController;
+use CyberTech\Infra\Controllers\SuppliersController;
 
 return [
     [
-        'uri' => '/categories',
+        'uri' => '/suppliers',
         'resource' => [
-            'controller' => CategoriesController::class,
+            'controller' => SuppliersController::class,
             'action' => 'index'
         ],
         'methods' => ['GET']
     ],
     [
-        'uri' => '/categories/create',
+        'uri' => '/suppliers/create',
         'resource' => [
-            'controller' => CategoriesController::class,
+            'controller' => SuppliersController::class,
             'action' => 'create'
         ],
         'methods' => ['POST']
     ],
     [
-        'uri' => '/categories/update/{id}}',
+        'uri' => '/suppliers/update/{id}',
         'resource' => [
-            'controller' => CategoriesController::class,
+            'controller' => SuppliersController::class,
             'action' => 'update'
         ],
         'methods' => ['PUT']
     ],
     [
-        'uri' => '/categories/delete/{id}}',
+        'uri' => '/suppliers/delete/{id}',
         'resource' => [
-            'controller' => CategoriesController::class,
+            'controller' => SuppliersController::class,
             'action' => 'delete'
         ],
         'methods' => ['DELETE']

@@ -16,7 +16,7 @@ class DocumentCPFCNPJ
 
     public function __construct(string $value)
     {
-       $this->cpf = $this->validate($value);
+        $this->cpf = $this->validate($value);
     }
 
     public function getValue(): string
@@ -29,32 +29,32 @@ class DocumentCPFCNPJ
      */
     private function validate(string $document): string
     {
-      if (empty($document)) {
-          throw new Exception("value for document cpf/cnpj is empty");
-      }
+        if (empty($document)) {
+            throw new Exception("value for document cpf/cnpj is empty");
+        }
 
-      $document = $this->clean($document);
-      $typeDocument = $this->isCPFOrCPNJ($document);
+        $document = $this->clean($document);
+        $typeDocument = $this->isCPFOrCPNJ($document);
 
-      if ($this->hasAllDigitsEqual($document)) {
-        throw new Exception("all digits from cpf/cnpj are equals");
-      }
+        if ($this->hasAllDigitsEqual($document)) {
+            throw new Exception("all digits from cpf/cnpj are equals");
+        }
 
-      if ($typeDocument == self::CPF) {
-          if (!$this->validateCPF($document)) {
-              throw new Exception("Invalid CPF");
-          }
-          return $document;
-      }
+        if ($typeDocument == self::CPF) {
+            if (!$this->validateCPF($document)) {
+                throw new Exception("Invalid CPF");
+            }
+            return $document;
+        }
 
-      if ($typeDocument == self::CNPJ) {
-          if (!$this->validateCNPJ($document)) {
-              throw new Exception("Invalid CNPJ");
-          }
-          return $document;
-      }
+        if ($typeDocument == self::CNPJ) {
+            if (!$this->validateCNPJ($document)) {
+                throw new Exception("Invalid CNPJ");
+            }
+            return $document;
+        }
 
-      throw new Exception("Invalid Cpf/Cnpj");
+        throw new Exception("Invalid Cpf/Cnpj");
     }
 
     private function clean(string $document): string

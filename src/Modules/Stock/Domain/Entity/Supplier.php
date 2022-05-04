@@ -14,6 +14,6 @@ class Supplier
         public readonly string $city,
         public readonly string $state,
         public int $id = 0
-    ){
+    ) {
     }
 }
