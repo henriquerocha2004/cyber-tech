@@ -7,7 +7,8 @@ class SupplierOutput
     public function __construct(
         public bool $result,
         public string $message = '',
-        public mixed $error = null
+        public mixed $error = null,
+        public int $code = 200
     ) {
     }
 }

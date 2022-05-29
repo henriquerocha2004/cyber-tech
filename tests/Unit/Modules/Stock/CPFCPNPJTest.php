@@ -1,6 +1,6 @@
 <?php
 
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 
 test("this should validate cpf correctly", function () {
     $cpf = new DocumentCPFCNPJ("666.392.030-81");

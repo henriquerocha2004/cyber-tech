@@ -36,7 +36,7 @@ class SupplierCollection implements Iterator
 
     public function next(): void
     {
-        $this->suppliers++;
+        $this->pointer++;
     }
 
     public function key(): mixed

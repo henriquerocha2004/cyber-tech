@@ -4,7 +4,7 @@ namespace CyberTech\Infra\Controllers;
 
 use CyberTech\Modules\Stock\Application\UseCases\Suppliers\SupplierInput;
 use CyberTech\Modules\Stock\Application\UseCases\Suppliers\SupplierManager;
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

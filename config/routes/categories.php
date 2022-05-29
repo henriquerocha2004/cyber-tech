@@ -20,7 +20,7 @@ return [
         'methods' => ['POST']
     ],
     [
-        'uri' => '/categories/update/{id}}',
+        'uri' => '/categories/update/{id}',
         'resource' => [
             'controller' => CategoriesController::class,
             'action' => 'update'
@@ -28,7 +28,7 @@ return [
         'methods' => ['PUT']
     ],
     [
-        'uri' => '/categories/delete/{id}}',
+        'uri' => '/categories/delete/{id}',
         'resource' => [
             'controller' => CategoriesController::class,
             'action' => 'delete'

@@ -31,7 +31,7 @@ use CyberTech\Infra\Storage\Database\SupplierRepository;
 use CyberTech\Modules\Stock\Domain\Entity\Category;
 use CyberTech\Modules\Stock\Domain\Entity\Product;
 use CyberTech\Modules\Stock\Domain\Entity\Supplier;
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 use JetBrains\PhpStorm\ArrayShape;
 
 expect()->extend('toBeOne', function () {

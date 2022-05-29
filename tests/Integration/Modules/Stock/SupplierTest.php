@@ -4,7 +4,7 @@ use CyberTech\Infra\Storage\Database\Mysql\PdoAdapterMysql;
 use CyberTech\Infra\Storage\Database\SupplierRepository;
 use CyberTech\Modules\Stock\Application\UseCases\Suppliers\SupplierInput;
 use CyberTech\Modules\Stock\Application\UseCases\Suppliers\SupplierManager;
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 
 $adapterPdoMysql = new PdoAdapterMysql();
 $supplierRepository = new SupplierRepository($adapterPdoMysql);

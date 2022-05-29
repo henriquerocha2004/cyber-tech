@@ -5,7 +5,7 @@ namespace CyberTech\Infra\Storage\Database;
 use CyberTech\Modules\Stock\Domain\Collections\SupplierCollection;
 use CyberTech\Modules\Stock\Domain\Entity\Supplier;
 use CyberTech\Modules\Stock\Domain\Repository\ISupplierRepository;
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 
 class SupplierRepository implements ISupplierRepository
 {

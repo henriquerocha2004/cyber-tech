@@ -2,7 +2,7 @@
 
 namespace CyberTech\Modules\Stock\Domain\Entity;
 
-use CyberTech\Modules\Stock\Domain\ValueObject\DocumentCPFCNPJ;
+use CyberTech\Modules\Stock\Domain\ValueObjects\DocumentCPFCNPJ;
 
 class Supplier
 {

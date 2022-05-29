@@ -35,7 +35,7 @@ class CategoryCollection implements \Iterator
 
     public function next(): void
     {
-        $this->categories++;
+        $this->pointer++;
     }
 
     public function key(): mixed

@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberTech\Modules\Stock\Domain\ValueObjects;
+namespace CyberTech\Modules\Attendance\Domain\ValueObjects;
 
 use Exception;
 
